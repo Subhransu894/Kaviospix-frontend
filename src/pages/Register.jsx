@@ -18,7 +18,7 @@ function Register(){
             return
         }
         try {
-            const response = await fetch("http://localhost:4000/auth/register",{
+            const response = await fetch("https://kaviospix-backend-57jz.onrender.com/auth/register",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -154,7 +154,7 @@ function Register(){
                                 className="btn btn-outline-dark w-100 py-2"
                                 type="button"
                                 onClick={()=>{
-                                    window.location.href = "http://localhost:4000/auth/google"
+                                    window.location.href = "https://kaviospix-backend-57jz.onrender.com/auth/google"
                                 }}
                             >
                                 <i className="bi bi-google me-2"></i>

@@ -29,7 +29,7 @@ function AlbumDetails(){
         try {
             const token = localStorage.getItem("token")
 
-            const response = await fetch(`http://localhost:4000/images?albumId=${albumId}`,{
+            const response = await fetch(`https://kaviospix-backend-57jz.onrender.com/images?albumId=${albumId}`,{
                     headers:{
                         Authorization:`Bearer ${token}`
                     }
@@ -48,7 +48,7 @@ function AlbumDetails(){
         try{
             const token = localStorage.getItem("token")
 
-            const response = await fetch("http://localhost:4000/albums",{
+            const response = await fetch("https://kaviospix-backend-57jz.onrender.com/albums",{
                 headers:{
                     Authorization: `Bearer ${token}`
                 },
@@ -94,7 +94,7 @@ function AlbumDetails(){
         try {
             const token = localStorage.getItem("token")
 
-            const response = await fetch(`http://localhost:4000/images/${imageId}`,{
+            const response = await fetch(`https://kaviospix-backend-57jz.onrender.com/images/${imageId}`,{
                 method:"DELETE",
                 headers:{
                     Authorization: `Bearer ${token}`
@@ -116,7 +116,7 @@ function AlbumDetails(){
     const handleUpdate = async(imageId)=>{
         try {
             const token = localStorage.getItem("token")
-            const response = await fetch(`http://localhost:4000/images/${imageId}`,{
+            const response = await fetch(`https://kaviospix-backend-57jz.onrender.com/images/${imageId}`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json",
@@ -147,7 +147,7 @@ function AlbumDetails(){
         try {
             const token = localStorage.getItem("token")
 
-            const response = await fetch(`http://localhost:4000/images/${image.imageId}`,{
+            const response = await fetch(`https://kaviospix-backend-57jz.onrender.com/images/${image.imageId}`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json",
@@ -176,7 +176,7 @@ function AlbumDetails(){
         }
         try {
             const token = localStorage.getItem("token")
-            const response = await fetch(`http://localhost:4000/images/${image.imageId}`,{
+            const response = await fetch(`https://kaviospix-backend-57jz.onrender.com/images/${image.imageId}`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json",
@@ -206,7 +206,7 @@ function AlbumDetails(){
         }
         try {
             const token = localStorage.getItem("token")
-            const response = await fetch(`http://localhost:4000/albums/${albumId}/share`,{
+            const response = await fetch(`https://kaviospix-backend-57jz.onrender.com/albums/${albumId}/share`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",

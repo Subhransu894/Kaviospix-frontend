@@ -8,7 +8,7 @@ function Favorites(){
     const fetchFavorites = async()=>{
         try {
             const token = localStorage.getItem("token")
-            const response = await fetch("http://localhost:4000/images/favorites",{
+            const response = await fetch("https://kaviospix-backend-57jz.onrender.com/images/favorites",{
                 headers:{
                     Authorization: `Bearer ${token}`
                 }

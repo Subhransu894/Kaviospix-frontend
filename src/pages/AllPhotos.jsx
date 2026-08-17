@@ -8,7 +8,7 @@ function AllPhotos(){
     const fetchAllImages = async()=>{
         try {
             const token = localStorage.getItem("token")
-            const response = await fetch("http://localhost:4000/images",{
+            const response = await fetch("https://kaviospix-backend-57jz.onrender.com/images",{
                 headers:{
                     Authorization: `Bearer ${token}`
                 }

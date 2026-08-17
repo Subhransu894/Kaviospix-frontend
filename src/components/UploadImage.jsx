@@ -21,7 +21,7 @@ function UploadImage({ albumId, onUploadSuccess }) {
             formData.append("albumId", albumId);
 
             const response = await fetch(
-                "http://localhost:4000/images",
+                "https://kaviospix-backend-57jz.onrender.com/images",
                 {
                     method: "POST",
                     headers: {

@@ -13,7 +13,7 @@ function CreateAlbum({onAlbumCreated}){
         try {
             setCreating(true)
             const token = localStorage.getItem("token")
-            const response=await fetch("http://localhost:4000/albums",{
+            const response=await fetch("https://kaviospix-backend-57jz.onrender.com/albums",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",

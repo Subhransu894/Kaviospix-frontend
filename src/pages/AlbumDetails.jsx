@@ -81,7 +81,8 @@ function AlbumDetails(){
             if(!response.ok){
                 throw new Error(data.message)
             }
-            console.log(data)
+            console.log("users length:", data.users.length)
+            console.log("first user:", data.users[0])
             setUsers(data.users)
         } catch (error) {
             console.error(error.message)
@@ -252,6 +253,7 @@ function AlbumDetails(){
             setToast({show:true,message:error.message,type:"danger"})
         }
     }
+    console.log("USERS IN RENDER:", users)
     return (
         <>
             {toast.show && (
@@ -267,9 +269,9 @@ function AlbumDetails(){
                         <p className="text-secondary mb-0">Manage your photos</p>
                     </div>
                     {isOwner && (
-                        <button type="button" className="btn btn-outline-primary" onClick={()=>{
+                        <button type="button" className="btn btn-outline-primary" onClick={async()=>{
+                                await fetchUsers()
                                 setShowShareModal(true)
-                                fetchUsers()
                             }}>
                             <i className="bi bi-share me-2"></i>
                             Share Album
@@ -422,11 +424,11 @@ function AlbumDetails(){
                                     </label>
                                     <select className="form-select" value={shareEmail} onChange={(e)=>{setShareEmail(e.target.value)}}>
                                         <option value="">Select a user </option>
-                                        {users.map((user)=>{
+                                        {users.map((user)=>(
                                             <option value={user.email} key={user.userId}>
                                                 {user.email}
                                             </option>
-                                        })}
+                                        ))}
                                     </select>
                                     <small className="text-secondary">
                                         Select the user you want to share this album with.

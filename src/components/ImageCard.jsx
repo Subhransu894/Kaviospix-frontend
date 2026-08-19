@@ -41,7 +41,7 @@ function ImageCard({image,onDelete,onEdit,onImageClick,onFavorite,comment,setCom
                     {/* edit section */}
                 </div>
                 {/* comment section */}
-                <div className="border-top pt-3">
+                <div className="border-top pt-3 px-3 pb-3">
                     <h6 className="mb-3"> 
                         <i className="bi bi-chat-left-text me-2"></i>
                          comments
@@ -56,12 +56,12 @@ function ImageCard({image,onDelete,onEdit,onImageClick,onFavorite,comment,setCom
                             ))}
                         </div>
                     ):(
-                        <p className="small text-secondary">
+                        <p className="small text-secondary mb-3">
                             No Comments yet
                         </p>
                     )}
                     {isOwner && (
-                        <div className="input-group input-group-sm">
+                        <div className="input-group input-group-sm mt-2">
                             <input 
                                 type="text" 
                                 value={comment} 

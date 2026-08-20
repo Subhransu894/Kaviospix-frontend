@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CreateAlbum from "../components/CreateAlbum";
+import EditAlbum from "../components/EditAlbum";
 import ToastMessage from "../components/ToastMessage";
 
 function Albums(){
     const [albums,setAlbums] = useState([])
+    const [editingAlbum,setEditingAlbum]=useState(null)
+
     const [toast,setToast]=useState({show:false,message:"",type:"success"})
+
 
     const navigate = useNavigate()
     const fetchAlbum=async()=>{
@@ -65,6 +69,7 @@ function Albums(){
                     <p className="text-secondary mb-0">Organize and manage your photos</p>
                 </div>
                 <CreateAlbum onAlbumCreated={fetchAlbum} />
+                {/* Album Grid */}
                 <div className="row g-4 mt-2">
                     {albums.map((album) => (
                         <div className="col-12 col-md-6 col-lg-4" key={album._id}>
@@ -99,6 +104,14 @@ function Albums(){
                                             {album.description || "No description"}
                                         </p>
                                     </div>
+                                    <button type="button" className="btn btn-sm btn-outline-primary ms-2"
+                                        onClick={(e)=>{
+                                            e.stopPropagation()
+                                            setEditingAlbum(album)
+                                        }}
+                                    > 
+                                        <i className="bi bi-pencil"></i>
+                                    </button>
                                     <button type="button" className="btn btn-sm btn-outline-danger ms-2"
                                         onClick={(e)=>{
                                             e.stopPropagation()
@@ -112,6 +125,24 @@ function Albums(){
                         </div>
                     ))}
                 </div>
+                {/* Editing Pop-up for album */}
+                {editingAlbum && (
+                    <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0, 0, 0, 0.5)"}}>
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <EditAlbum album={editingAlbum} onAlbumUpdated={()=>{
+                                        setEditingAlbum(null)
+                                        fetchAlbum()
+                                    }}
+                                    onCancel={()=>setEditingAlbum(null)}
+                                    onMessage={(message,type)=>{
+                                        setToast({show:true,message,type})
+                                    }}
+                                 />
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </>
     )

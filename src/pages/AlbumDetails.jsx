@@ -253,7 +253,7 @@ function AlbumDetails(){
             setToast({show:true,message:error.message,type:"danger"})
         }
     }
-    console.log("USERS IN RENDER:", users)
+    // console.log("USERS IN RENDER:", users)
     return (
         <>
             {toast.show && (

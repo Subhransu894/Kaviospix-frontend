@@ -7,6 +7,7 @@ import ToastMessage from "../components/ToastMessage";
 function Albums(){
     const [albums,setAlbums] = useState([])
     const [editingAlbum,setEditingAlbum]=useState(null)
+    const [search,setSearch]=useState("")
 
     const [toast,setToast]=useState({show:false,message:"",type:"success"})
 
@@ -57,6 +58,11 @@ function Albums(){
             setToast({show:true,message:error.message,type:"danger"})
         }
     }
+
+    const filterAlbums = albums.filter((album)=>
+        album.name.toLowerCase().includes(search.toLowerCase()) ||
+        album.description?.toLowerCase().includes(search.toLowerCase())
+    )
     return(
         <>
             {toast.show && (
@@ -68,10 +74,21 @@ function Albums(){
                     <h1 className="fw-semibold mb-1">My Albums</h1>
                     <p className="text-secondary mb-0">Organize and manage your photos</p>
                 </div>
+                <div className="input-group mb-4">
+                    <span className="input-group-text">
+                        <i className="bi bi-search"></i>
+                    </span>
+                    <input type="text"
+                        className="form-control"
+                        placeholder="Search albums..."
+                        value={search}
+                        onChange={(e)=>setSearch(e.target.value)}
+                    />
+                </div>
                 <CreateAlbum onAlbumCreated={fetchAlbum} />
                 {/* Album Grid */}
                 <div className="row g-4 mt-2">
-                    {albums.map((album) => (
+                    {filterAlbums.map((album) => (
                         <div className="col-12 col-md-6 col-lg-4" key={album._id}>
                             <div
                                 className="card h-100 border-0 shadow-sm"

@@ -13,7 +13,7 @@ function EditAlbum({album,onAlbumUpdated,onCancel,onMessage}){
         try {
             setUpdating(true)
             const token = localStorage.getItem("token")
-            const response = await fetch(`http://localhost:4000/albums/${album.albumId}`,{
+            const response = await fetch(`https://kaviospix-backend-57jz.onrender.com/albums/${album.albumId}`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json",
